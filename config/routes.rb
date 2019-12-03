@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
 
-
-
   # Routes for the Bookmark spot resource:
 
   # CREATE
@@ -28,7 +26,7 @@ Rails.application.routes.draw do
   match("/insert_visit", { :controller => "visits", :action => "create", :via => "post"})
           
   # READ
-  match("/visits", { :controller => "visits", :action => "index", :via => "get"})
+  match("/", { :controller => "visits", :action => "index", :via => "get"})
   
   match("/visits/:id_from_path", { :controller => "visits", :action => "show", :via => "get"})
   
