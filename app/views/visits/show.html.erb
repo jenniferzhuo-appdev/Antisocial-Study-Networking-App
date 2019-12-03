@@ -1,0 +1,101 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Visit #<%= @visit.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/visits" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_visit/<%= @visit.id %>" class="btn btn-block btn-outline-secondary">
+          Delete visit
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Purpose
+      </dt>
+      <dd>
+        <%= @visit.purpose %>
+      </dd>
+
+      <dt>
+        Visitors
+      </dt>
+      <dd>
+        <%= @visit.visitors_id %>
+      </dd>
+
+      <dt>
+        Location
+      </dt>
+      <dd>
+        <%= @visit.location_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@visit.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@visit.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Edit visit
+    </h2>
+
+    <form action="/modify_visit/<%= @visit.id %>"  method="post" >
+      <div class="form-group">
+        <label for="purpose_box">
+          Purpose
+        </label>
+
+        <input type="text" id="purpose_box" name="purpose_from_query" class="form-control" value="<%= @visit.purpose %>">
+      </div>
+
+      <div class="form-group">
+        <label for="visitors_id_box">
+          Visitors
+        </label>
+
+        <input type="text" id="visitors_id_box" name="visitors_id_from_query" class="form-control" value="<%= @visit.visitors_id %>">
+      </div>
+
+      <div class="form-group">
+        <label for="location_id_box">
+          Location
+        </label>
+
+        <input type="text" id="location_id_box" name="location_id_from_query" class="form-control" value="<%= @visit.location_id %>">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Update visit
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

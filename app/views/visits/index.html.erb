@@ -1,0 +1,118 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      List of all visits
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Add a new visit
+    </h2>
+
+    <form action="/insert_visit" method="post">
+      <div class="form-group">
+        <label for="purpose_box">
+          Purpose
+        </label>
+
+        <input type="text" id="purpose_box" name="purpose_from_query" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="visitors_id_box">
+          Visitors
+        </label>
+
+        <input type="text" id="visitors_id_box" name="visitors_id_from_query" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="location_id_box">
+          Location
+        </label>
+
+        <input type="text" id="location_id_box" name="location_id_from_query" class="form-control">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create visit
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Purpose
+        </th>
+
+        <th>
+          Visitors
+        </th>
+
+        <th>
+          Location
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @visits.each do |visit| %>
+      <tr>
+        <td>
+          <%= visit.id %>
+        </td>
+
+        <td>
+          <%= visit.purpose %>
+        </td>
+
+        <td>
+          <%= visit.visitors_id %>
+        </td>
+
+        <td>
+          <%= visit.location_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(visit.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(visit.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/visits/<%= visit.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

@@ -1,0 +1,100 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Close friend request #<%= @close_friend_request.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/close_friend_requests" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_close_friend_request/<%= @close_friend_request.id %>" class="btn btn-block btn-outline-secondary">
+          Delete close friend request
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Sender
+      </dt>
+      <dd>
+        <%= @close_friend_request.sender_id %>
+      </dd>
+
+      <dt>
+        Recipent
+      </dt>
+      <dd>
+        <%= @close_friend_request.recipent_id %>
+      </dd>
+
+      <dt>
+        Accepted
+      </dt>
+      <dd>
+        <%= @close_friend_request.accepted %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@close_friend_request.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@close_friend_request.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Edit close friend request
+    </h2>
+
+    <form action="/modify_close_friend_request/<%= @close_friend_request.id %>"  method="post" >
+      <div class="form-group">
+        <label for="sender_id_box">
+          Sender
+        </label>
+
+        <input type="text" id="sender_id_box" name="sender_id_from_query" class="form-control" value="<%= @close_friend_request.sender_id %>">
+      </div>
+
+      <div class="form-group">
+        <label for="recipent_id_box">
+          Recipent
+        </label>
+
+        <input type="text" id="recipent_id_box" name="recipent_id_from_query" class="form-control" value="<%= @close_friend_request.recipent_id %>">
+      </div>
+
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="accepted_box" name="accepted_from_query" value="1" <%= "checked" if @close_friend_request.accepted %>>
+
+        <label class="custom-control-label"
+          for="accepted_box">Accepted</label>
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Update close friend request
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
